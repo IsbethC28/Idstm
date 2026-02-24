@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Ventana extends JFrame{
@@ -16,7 +21,7 @@ public class Ventana extends JFrame{
 		
 		
 		this.setVisible(true);
-		this.setSize(500,500);
+		this.setSize(1000,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension (500,500));
@@ -59,9 +64,66 @@ public class Ventana extends JFrame{
 		
 		contenedor.repaint();
 		contenedor.revalidate();
+	
+		
+		JPanel registrer_container = new JPanel();
+		registrer_container.setLocation(510, 0);
+		registrer_container.setSize(500, 500);
+		registrer_container.setOpaque(true);
+		registrer_container.setBackground(Color.blue);
+		registrer_container.setLayout(null);
+		this.add(registrer_container);
+		
+		JLabel bio_tag = new JLabel("Biografía");
+		bio_tag.setBounds(100, 100, 250, 40);
+		bio_tag.setBackground(Color.white);
+		bio_tag.setHorizontalAlignment(JLabel.CENTER);
+		bio_tag.setOpaque(true);
+		bio_tag.setFont(new Font("Arial",Font.BOLD,22));
+		registrer_container.add(bio_tag);
+		
+		
+		JTextArea bio = new JTextArea();
+		bio.setBounds(120, 160, 250, 120);
+		registrer_container.add(bio);
+		
+		JCheckBox sweet_option = new JCheckBox ("Dulce");
+		sweet_option.setBounds(120, 330, 100, 50);
+		registrer_container.add(sweet_option);
+		
+		
+		JCheckBox salty_option = new JCheckBox("Salado");
+		salty_option.setBounds(220, 330, 100, 50);
+		registrer_container.add(salty_option);
+		
+		JCheckBox healthy = new JCheckBox("Saludable");
+		healthy.setBounds(320, 330, 100, 50);
+		registrer_container.add(healthy);
+
+		
+		JRadioButton acept_terms = new JRadioButton("Acepto los terminos");
+		acept_terms.setBounds(120, 400, 150, 50);
+		registrer_container.add(acept_terms);
+		
+		JRadioButton reject_terms = new JRadioButton("Rechazo los terminos");
+		reject_terms.setBounds(290, 400, 150, 50);
+		registrer_container.add(reject_terms);
+		
+		ButtonGroup terms = new ButtonGroup();
+		terms.add(reject_terms);
+		terms.add(acept_terms);
+		
+		
+		String [] colonias = {"Camino real","La fuente","Villas del encanto"};
+		
+		JComboBox list = new JComboBox(colonias);
+		list.setBounds(50, 50, 200, 60);
+		registrer_container.add(list);
 		
 		
 		
+		
+		registrer_container.repaint();
 	}
 
 }
