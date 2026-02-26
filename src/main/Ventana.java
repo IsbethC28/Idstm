@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +31,7 @@ public class Ventana extends JFrame{
 		
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
-		contenedor.setBackground(Color.black);
+		contenedor.setBackground(Color.decode("#EAE9E7"));
 		contenedor.setSize(500,500);
 		contenedor.setLocation(0, 0);
 		contenedor.setLayout(null);
@@ -70,7 +69,7 @@ public class Ventana extends JFrame{
 		registrer_container.setLocation(510, 0);
 		registrer_container.setSize(500, 500);
 		registrer_container.setOpaque(true);
-		registrer_container.setBackground(Color.blue);
+		registrer_container.setBackground(Color.decode("#EAE9E7"));
 		registrer_container.setLayout(null);
 		this.add(registrer_container);
 		
@@ -101,25 +100,24 @@ public class Ventana extends JFrame{
 		registrer_container.add(healthy);
 
 		
-		JRadioButton acept_terms = new JRadioButton("Acepto los terminos");
-		acept_terms.setBounds(120, 400, 150, 50);
-		registrer_container.add(acept_terms);
-		
-		JRadioButton reject_terms = new JRadioButton("Rechazo los terminos");
-		reject_terms.setBounds(290, 400, 150, 50);
-		registrer_container.add(reject_terms);
-		
-		ButtonGroup terms = new ButtonGroup();
-		terms.add(reject_terms);
-		terms.add(acept_terms);
-		
-		
-		String [] colonias = {"Camino real","La fuente","Villas del encanto"};
-		
-		JComboBox list = new JComboBox(colonias);
-		list.setBounds(50, 50, 200, 60);
-		registrer_container.add(list);
-		
+		JRadioButton acept_terms = new JRadioButton("Aceptar");
+        acept_terms.setBounds(120, 300, 100, 30);
+        registrer_container.add(acept_terms);
+
+        JRadioButton reject_terms = new JRadioButton("Rechazar");
+        reject_terms.setBounds(250, 300, 100, 30);
+        registrer_container.add(reject_terms);
+
+        ButtonGroup terms = new ButtonGroup();
+        terms.add(acept_terms);
+        terms.add(reject_terms);
+
+   
+        JButton registrar = new JButton("Registrar");
+        registrar.setBounds(175, 360, 150, 40);
+        registrer_container.add(registrar);
+
+        this.setVisible(true); 
 		
 		
 		
