@@ -30,7 +30,7 @@ public class Ventana extends JFrame{
 		
 		
 		this.setVisible(true);
-		this.setSize(1000,500);
+		this.setSize(414, 537);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension (500,500));
@@ -38,7 +38,6 @@ public class Ventana extends JFrame{
 		this.setTitle("hola");
 		this.setBackground(Color.BLACK);
 		this.setLayout(null);
-		this.test();
 		
 	}
 
@@ -332,7 +331,7 @@ public class Ventana extends JFrame{
 
        
         JPanel test_panel = new JPanel();
-        test_panel.setSize(800, 400);
+        test_panel.setSize(414, 537);
         test_panel.setLocation(100, 50);
         test_panel.setBackground(Color.white);
         test_panel.setLayout(new BorderLayout(30, 30));
@@ -545,7 +544,7 @@ public class Ventana extends JFrame{
         }
 
         test_panel.add(south_panel, BorderLayout.SOUTH);
-    }
+   }
 
     private double evaluate(String expr) {
         expr = expr.trim();
@@ -639,5 +638,5 @@ public class Ventana extends JFrame{
                 throw new RuntimeException("Unexpected char at " + pos);
             return Double.parseDouble(input.substring(start, pos));
         }
-}
+    }
 }
