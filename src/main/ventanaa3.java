@@ -142,13 +142,15 @@ public class ventanaa3 {
 		JLabel lblNewLabel_6 = new JLabel("");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setBackground(new Color(240, 240, 240));
-		lblNewLabel_6.setIcon(new ImageIcon("C:\\Users\\doña isbeth\\OneDrive\\Desktop\\29479ba0435741580ca9f4a467be6207.jpg"));
+		lblNewLabel_6.setIcon(new ImageIcon("C:\\Users\\doña isbeth\\OneDrive\\Desktop\\avatar.png"));
 		panel_1.add(lblNewLabel_6);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Mostrar foto de perfil");
+		chckbxNewCheckBox.setBackground(new Color(204, 248, 177));
 		panel_1.add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Mostrar fecha de nacimiento");
+		chckbxNewCheckBox_1.setBackground(new Color(204, 248, 177));
 		panel_1.add(chckbxNewCheckBox_1);
 		
 		JPanel panel_2 = new JPanel();

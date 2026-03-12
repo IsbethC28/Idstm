@@ -20,7 +20,8 @@ public class ventana2 extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        crearInterfaz();
+        //crearInterfaz();
+        pintar();
     }
 
     public void crearInterfaz(){
@@ -113,4 +114,44 @@ public class ventana2 extends JFrame implements ActionListener {
             txtMonto.setText("");
         }
     }
+    
+    public void pintar () {
+    	JPanel pane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                
+                Graphics2D g2d = (Graphics2D) g;
+               
+                g2d.setColor(Color.green);
+                g2d.setStroke(new BasicStroke (3));
+                
+                g2d.setColor(Color.pink);
+                g2d.drawLine(0, 0, 100, 100);
+                g2d.drawLine(200, 200, 500, 200);
+                
+                g2d.drawRect(250, 250, 100, 100);
+                
+                g2d.setColor(Color.green);
+                g2d.drawOval(150, 100, 100, 60);
+                
+                g2d.setColor(Color.blue);
+                g2d.setStroke(new BasicStroke (3));
+                g2d.drawArc(300, 100, 100, 100, 2, 180);
+                
+                g2d.drawPolygon(new int[] {200,100,300}, new int[] {100,300,500},3);
+                
+                g2d.fillRect(200, 200, 100, 100);
+                g2d.fillOval(90, 80, 70, 100);
+                
+                
+                
+            }
+    	};
+    	
+    	pane.setSize(1000,700);
+    	pane.setLocation(0, 0);
+    	this.add(pane);
+    }
+    
 }
