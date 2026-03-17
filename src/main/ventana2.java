@@ -1,9 +1,13 @@
 package main;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class ventana2 extends JFrame implements ActionListener {
 
@@ -122,29 +126,51 @@ public class ventana2 extends JFrame implements ActionListener {
                 super.paintComponent(g);
                 
                 Graphics2D g2d = (Graphics2D) g;
-               
-                g2d.setColor(Color.green);
-                g2d.setStroke(new BasicStroke (3));
-                
-                g2d.setColor(Color.pink);
-                g2d.drawLine(0, 0, 100, 100);
-                g2d.drawLine(200, 200, 500, 200);
-                
-                g2d.drawRect(250, 250, 100, 100);
-                
-                g2d.setColor(Color.green);
-                g2d.drawOval(150, 100, 100, 60);
                 
                 g2d.setColor(Color.blue);
-                g2d.setStroke(new BasicStroke (3));
-                g2d.drawArc(300, 100, 100, 100, 2, 180);
+                g2d.fillRect(0, 0, 500, 500);
+
+                g2d.setColor(Color.cyan);
+                g2d.fillRect(100, 150, 300, 200);
+           
+                g2d.setColor(Color.lightGray);
+                g2d.fillRect(80, 120, 340, 40);
+
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(350, 80, 40, 60);
                 
-                g2d.drawPolygon(new int[] {200,100,300}, new int[] {100,300,500},3);
+                g2d.setColor(Color.white);
+                g2d.fillRect(140, 180, 100, 100);
+
+                g2d.setColor(Color.cyan);
+                g2d.fillRect(150, 190, 30, 80);
+                g2d.fillRect(190, 190, 30, 80);
                 
-                g2d.fillRect(200, 200, 100, 100);
-                g2d.fillOval(90, 80, 70, 100);
+                g2d.setColor(Color.lightGray);
+                g2d.fillRect(130, 280, 120, 15);
+
+              
+                g2d.setColor(Color.GRAY);
+                g2d.fillRect(280, 180, 80, 150);
+
+                g2d.setColor(Color.LIGHT_GRAY);
+                g2d.fillRect(290, 190, 60, 130);
                 
+             
+                g2d.setColor(Color.YELLOW);
+                g2d.fillRect(340, 250, 10, 10);
+
+               
+                g2d.setColor(Color.GREEN);
+                g2d.fillRect(0, 350, 500, 50);
+
+               
+                g2d.setColor(new Color(120, 70, 0));
+                g2d.fillRect(0, 400, 500, 50);
                 
+                g2d.setColor(Color.ORANGE);
+                g2d.fillRect(400, 260, 50, 90);
+
                 
             }
     	};
@@ -153,5 +179,4 @@ public class ventana2 extends JFrame implements ActionListener {
     	pane.setLocation(0, 0);
     	this.add(pane);
     }
-    
 }
