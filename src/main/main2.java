@@ -6,6 +6,7 @@ public class main2 {
 
         ventana2 x = new ventana2();
         x.setVisible(true);
+        
 
     }
 
