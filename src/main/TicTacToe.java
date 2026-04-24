@@ -1,53 +1,164 @@
 package main;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.Color;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
 public class TicTacToe extends JFrame {
-	public TicTacToe() {
-		setBackground(new Color(240, 240, 240));
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(240, 240, 240));
-		getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(3, 3, 0, 0));
-		
-		JButton btnNewButton_1 = new JButton(" ");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.add(btnNewButton_1);
-		
-		JButton btnNewButton_3 = new JButton(" ");
-		panel.add(btnNewButton_3);
-		
-		JButton btnNewButton_6 = new JButton(" ");
-		panel.add(btnNewButton_6);
-		
-		JButton btnNewButton_4 = new JButton(" ");
-		panel.add(btnNewButton_4);
-		
-		JButton btnNewButton_2 = new JButton(" ");
-		panel.add(btnNewButton_2);
-		
-		JButton btnNewButton = new JButton(" ");
-		panel.add(btnNewButton);
-		
-		JButton btnNewButton_5 = new JButton(" ");
-		panel.add(btnNewButton_5);
-		
-		JButton btnNewButton_7 = new JButton(" ");
-		panel.add(btnNewButton_7);
-		
-		JButton btnNewButton_8 = new JButton(" ");
-		panel.add(btnNewButton_8);
-	}
 	
-}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+		Botongato[][] tablero = new Botongato[3][3];
+	    String turno = "X";
+
+	    JLabel lblX;
+	    JLabel lblO;
+
+	    int puntosX = 0;
+	    int puntosO = 0;
+
+	    public TicTacToe() {
+
+	        setTitle("Tic Tac Toe");
+	        setSize(400, 450);
+	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        setLocationRelativeTo(null);
+	        getContentPane().setLayout(new BorderLayout());
+
+	       
+	        JPanel panelTop = new JPanel(new GridLayout(1, 2));
+	        panelTop.setBackground(new Color(153, 204, 102));
+
+	        lblX = new JLabel("X: 0", SwingConstants.CENTER);
+	        lblO = new JLabel("O: 0", SwingConstants.CENTER);
+	        lblO.setBackground(new Color(255, 255, 255));
+
+	        lblX.setForeground(Color.WHITE);
+	        lblO.setForeground(Color.WHITE);
+	        lblX.setFont(new Font("Arial", Font.BOLD, 16));
+	        lblO.setFont(new Font("Arial", Font.BOLD, 16));
+
+	        panelTop.add(lblX);
+	        panelTop.add(lblO);
+
+	        getContentPane().add(panelTop, BorderLayout.NORTH);
+
+	       
+	        JPanel panelBoard = new JPanel(new GridLayout(3, 3));
+	        panelBoard.setBackground(new Color(255, 228, 225));
+
+	        for (int i = 0; i < 3; i++) {
+	            for (int j = 0; j < 3; j++) {
+
+	                Botongato boton = new Botongato(i, j);
+	                tablero[i][j] = boton;
+
+	                boton.setFont(new Font("Arial", Font.BOLD, 30));
+	                boton.setBackground(Color.WHITE);
+
+	                boton.addActionListener(e -> jugar(boton));
+
+	                panelBoard.add(boton);
+	            }
+	        }
+
+	        getContentPane().add(panelBoard, BorderLayout.CENTER);
+
+	       
+	        JPanel panelBottom = new JPanel();
+	        panelBottom.setBackground(new Color(153, 204, 102));
+
+	        JButton btnReiniciar = new JButton("Reiniciar");
+	        btnReiniciar.setBackground(new Color(255, 228, 225));
+
+	        btnReiniciar.addActionListener(e -> reiniciar());
+
+	        panelBottom.add(btnReiniciar);
+
+	        getContentPane().add(panelBottom, BorderLayout.SOUTH);
+
+	        setVisible(true);
+	    }
+
+	    
+	    public void jugar(Botongato boton) {
+
+	        if (!boton.getValor().equals("")) return;
+
+	        boton.setValor(turno);
+
+	        if (verificarGanador(turno)) {
+
+	            JOptionPane.showMessageDialog(this, "Gano " + turno);
+	            
+	            if (turno.equals("X")) {
+	                puntosX++;
+	            } else {
+	                puntosO++;
+	            }
+
+	            actualizarMarcador();
+	            reiniciar();
+	            return;
+	        }
+
+	        turno = turno.equals("X") ? "O" : "X";
+	    }
+
+	    public boolean verificarGanador(String jugador) {
+
+	        for (int i = 0; i < 3; i++) {
+	            if (tablero[i][0].getValor().equals(jugador) &&
+	                tablero[i][1].getValor().equals(jugador) &&
+	                tablero[i][2].getValor().equals(jugador)) return true;
+	        }
+
+	        for (int j = 0; j < 3; j++) {
+	            if (tablero[0][j].getValor().equals(jugador) &&
+	                tablero[1][j].getValor().equals(jugador) &&
+	                tablero[2][j].getValor().equals(jugador)) return true;
+	        }
+
+	        if (tablero[0][0].getValor().equals(jugador) &&
+	            tablero[1][1].getValor().equals(jugador) &&
+	            tablero[2][2].getValor().equals(jugador)) return true;
+
+	        if (tablero[0][2].getValor().equals(jugador) &&
+	            tablero[1][1].getValor().equals(jugador) &&
+	            tablero[2][0].getValor().equals(jugador)) return true;
+
+	        return false;
+	    }
+
+	    
+	    public void reiniciar() {
+
+	        for (int i = 0; i < 3; i++) {
+	            for (int j = 0; j < 3; j++) {
+	                tablero[i][j].setValor("");
+	            }
+	        }
+
+	        turno = "X";
+	    }
+
+	    public void actualizarMarcador() {
+	        lblX.setText("X: " + puntosX);
+	        lblO.setText("O: " + puntosO);
+	    }
+
+	    public static void main(String[] args) {
+	        new TicTacToe();
+	    }
+	}
